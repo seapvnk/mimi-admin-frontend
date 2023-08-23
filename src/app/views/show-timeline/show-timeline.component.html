@@ -1,0 +1,40 @@
+<h1>timeline #{{ timeline.id }}</h1>
+
+<table mat-table [dataSource]="timeline.worlds || []" class="mat-elevation-z8 demo-table">
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let world"> #{{world.id.toString().padStart(5, '0')}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let world">{{ world.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Description </th>
+        <td mat-cell *matCellDef="let world">{{ world.description }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="signature">
+        <th mat-header-cell *matHeaderCellDef> Signature </th>
+        <td mat-cell *matCellDef="let world">{{ world.signature }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="created_at">
+        <th mat-header-cell *matHeaderCellDef> Creation date </th>
+        <td mat-cell *matCellDef="let world"> {{timeline.created_at}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let world">
+            <a mat-button href="worlds/{{ world.id }}">
+                <mat-icon>keyboard_arrow_right</mat-icon>
+            </a>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

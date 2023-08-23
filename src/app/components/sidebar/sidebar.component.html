@@ -1,0 +1,6 @@
+<mat-nav-list>
+    <a mat-list-item *ngFor="let link of links" href="{{ link.link }}">
+        <mat-icon>{{ link.icon }}</mat-icon>
+        {{ link.description }}
+    </a>
+</mat-nav-list>
